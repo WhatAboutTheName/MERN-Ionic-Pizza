@@ -1,8 +1,9 @@
-import { UserModel } from '../models/user.model';
-import { validationResult } from 'express-validator/check';
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
+import * as config from 'config';
 import { Request, Response, NextFunction} from 'express';
+import { validationResult } from 'express-validator/check';
+import { UserModel } from '../models/user.model';
 import { SendMail } from './mail/mail';
 
 export class AuthControllers {
@@ -50,7 +51,7 @@ export class AuthControllers {
             }
             const token = jwt.sign(
                 {email: person.email, userId: person._id},
-                "some_secret_key",
+                config.get('jwtSecretKey'),
                 {expiresIn: "1h"}
             );
             res.status(200).json({

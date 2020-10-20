@@ -1,6 +1,7 @@
 import * as express from 'express';
-import { AdminControllers } from '../controllers/admin';
 import multer from 'multer';
+import { AdminControllers } from '../controllers/admin';
+import { checkAuth } from '../route-protector/auth';
 
 export const adminRoutes = express.Router();
 
@@ -31,6 +32,6 @@ const storage = multer.diskStorage({
   }
 });
 
-adminRoutes.post('/create-pizza', multer({ storage: storage }).single("image"), adminControllers.createPizza);
+adminRoutes.post('/create-pizza', checkAuth, multer({ storage: storage }).single("image"), adminControllers.createPizza);
 
-adminRoutes.get('/get-all-orders', adminControllers.getAllOrders);
+adminRoutes.get('/get-all-orders', checkAuth, adminControllers.getAllOrders);
