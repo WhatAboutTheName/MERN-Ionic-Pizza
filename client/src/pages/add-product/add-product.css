@@ -1,0 +1,23 @@
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagePreviw {
+    max-width: 50%;
+    min-width: 50%;
+}
+
+.imagePicker {
+    visibility: hidden;
+}
+
+.btnMaxWidth {
+    min-width: 100%;
+}
+
+.textareaContainer,
+.textarea {
+    height: 50%;
+}

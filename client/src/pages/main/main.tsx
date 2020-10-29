@@ -10,6 +10,7 @@ export const Main: React.FC = () => {
                 key={'main'}
             />
             <IonContent>
+            
             </IonContent>
         </>
     );

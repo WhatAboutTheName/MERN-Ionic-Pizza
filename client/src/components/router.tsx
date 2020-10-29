@@ -10,12 +10,14 @@ import { Main } from '../pages/main/main';
 import { NotFound } from '../pages/not-found/not-found';
 import { Order } from '../pages/order/order';
 import { SignUp } from '../pages/sign-up/sign-up';
+import { AddProduct } from '../pages/add-product/add-product';
 
 export const MainRoute: React.FC = () => {
     return (
         <IonPage id="main">
             <IonRouterOutlet>
                 <Route exact path="/" component={Main} />
+                <Route path="/add-product" component={AddProduct} />
                 <Route path="/Cart" component={Cart} />
                 <Route path="/Order" component={Order} />
                 <Route path="/log-in" component={LogIn} />

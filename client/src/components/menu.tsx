@@ -29,6 +29,9 @@ const Menu: React.FC<ChildProp> = ({ history }) => {
                     <IonItem onClick={() => history.push('/')}>Home</IonItem>
                 </IonMenuToggle>
                 <IonMenuToggle>
+                    <IonItem onClick={() => history.push('/add-product')}>Add product</IonItem>
+                </IonMenuToggle>
+                <IonMenuToggle>
                     <IonItem onClick={() => history.push('/Cart')}>Cart</IonItem>
                 </IonMenuToggle>
                 <IonMenuToggle>

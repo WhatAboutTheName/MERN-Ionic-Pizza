@@ -17,6 +17,10 @@ const pizzaSchema: mongoose.Schema = new Schema({
     image: {
         type: String,
         required: true
+    },
+    description: {
+        type: String,
+        require: true
     }
 });
 
