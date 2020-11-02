@@ -13,7 +13,7 @@ export class AdminControllers {
         price: price,
         image: image + "/images/" + req['file'].filename
       });
-      const prod = await product.save();
+      await product.save();
       res.status(201).json({message: "Post added successfully"});
     } catch (err) {
       if (!err.statusCode) {

@@ -8,7 +8,11 @@ import {
     IonTextarea,
 } from '@ionic/react';
 import React, { createRef, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { axios } from '../../axios';
 import { Header } from '../../components/header';
+import { IAuth } from '../../store/action-interface';
 import './add-product.css';
 
 interface IProduct {
@@ -19,6 +23,9 @@ interface IProduct {
 }
 
 export const AddProduct: React.FC = () => {
+
+    const history = useHistory();
+    const token = useSelector((state: IAuth) => state.auth.token);
     const fileInputRef: React.RefObject<HTMLInputElement> = createRef();
     const [imagePreview, setImagePreview] = useState('');
     const [product, setProduct] = useState({} as IProduct);
@@ -50,9 +57,12 @@ export const AddProduct: React.FC = () => {
             data.append("title", product.title);
             data.append("price", product.price);
             data.append("image", product.image, product.title);
-            // await axios.post('/admin/addProduct', data, {
-            //     Authorization: `Bearer ${auth.token}`
-            // });
+            await axios.post('/admin/create-pizza', data, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            history.push('/');
         } catch (e) { }
     }
 

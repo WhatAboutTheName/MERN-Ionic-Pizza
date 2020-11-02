@@ -5,17 +5,18 @@ import * as path from 'path';
 import { authRoutes } from './roters/auth';
 import { adminRoutes } from './roters/admin';
 import { userRoutes } from './roters/user';
+import { Request, Response, NextFunction } from 'express';
 
 const app = express();
 const PORT = process.env.PORT || config.get('port');
 
 app.use(express.json());
-app.use("/images", express.static(path.join("server/images")));
+app.use("/images", express.static(path.join("images")));
 
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.setHeader(
       'Access-Control-Allow-Methods',
       'OPTIONS, GET, POST, PUT, PATCH, DELETE'

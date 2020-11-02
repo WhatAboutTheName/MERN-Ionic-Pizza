@@ -1,6 +1,6 @@
-import Axios from 'axios';
+import Axios, { AxiosInstance } from 'axios';
 
-export const axios = Axios.create({
+export const axios: AxiosInstance | any = Axios.create({
     baseURL: "http://localhost:5000",
     responseType: "json"
 });

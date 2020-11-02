@@ -20,6 +20,7 @@ interface IUser {
 }
 
 export const SignUp = () => {
+
     const history = useHistory();
     const [phoneNumber, setPhoneNumber] = useState(undefined);
     const [user, setUser] = useState({} as IUser);
