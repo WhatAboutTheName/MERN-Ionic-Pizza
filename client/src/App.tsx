@@ -6,6 +6,7 @@ import {
 import { BrowserRouter } from 'react-router-dom';
 import Menu from './components/menu';
 import { MainRoute } from './components/router';
+import './style.css'
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';

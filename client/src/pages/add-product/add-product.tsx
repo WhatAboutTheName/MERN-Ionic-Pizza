@@ -21,7 +21,7 @@ interface IProduct {
 export const AddProduct: React.FC = () => {
     const fileInputRef: React.RefObject<HTMLInputElement> = createRef();
     const [imagePreview, setImagePreview] = useState('');
-    const [product, setProduct] = useState({} as IProduct)
+    const [product, setProduct] = useState({} as IProduct);
 
     const setValue = (event: Event) => {
         const target = event.target as HTMLInputElement;
@@ -50,10 +50,10 @@ export const AddProduct: React.FC = () => {
             data.append("title", product.title);
             data.append("price", product.price);
             data.append("image", product.image, product.title);
-            // await request('/admin/addProduct', 'post', data, {
+            // await axios.post('/admin/addProduct', data, {
             //     Authorization: `Bearer ${auth.token}`
             // });
-        } catch(e) {}
+        } catch (e) { }
     }
 
     const filePickerClick = () => {
@@ -110,12 +110,12 @@ export const AddProduct: React.FC = () => {
                     />
                 </IonItem>
                 <IonButton
-                        color="warning"
-                        onClick={uploadProduct}
-                        className="btnMaxWidth"
-                    >
-                        Accept
-                    </IonButton>
+                    color="warning"
+                    onClick={uploadProduct}
+                    className="btnMaxWidth btnBottom"
+                >
+                    Accept
+                </IonButton>
             </IonContent>
         </>
     );

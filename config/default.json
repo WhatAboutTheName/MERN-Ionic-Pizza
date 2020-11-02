@@ -1,0 +1,5 @@
+{
+    "port": 5000,
+    "mongodbUri": "mongodb+srv://WATN:123qwe123@cluster0.3cjj2.mongodb.net/ionic-pizza",
+    "jwtSecretKey": "some_secret_key"
+}

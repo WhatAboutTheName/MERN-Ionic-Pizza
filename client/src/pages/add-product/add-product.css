@@ -13,10 +13,6 @@
     visibility: hidden;
 }
 
-.btnMaxWidth {
-    min-width: 100%;
-}
-
 .textareaContainer,
 .textarea {
     height: 50%;

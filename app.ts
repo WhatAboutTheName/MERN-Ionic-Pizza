@@ -2,6 +2,9 @@ import * as express from 'express';
 import * as config from 'config';
 import * as mongoose from 'mongoose';
 import * as path from 'path';
+import { authRoutes } from './roters/auth';
+import { adminRoutes } from './roters/admin';
+import { userRoutes } from './roters/user';
 
 const app = express();
 const PORT = process.env.PORT || config.get('port');
@@ -19,6 +22,10 @@ app.use((req, res, next) => {
     );
     next();
 });
+
+app.use('/user', userRoutes);
+app.use('/admin', adminRoutes);
+app.use('/auth', authRoutes);
 
 async function mongoConnect() {
     try {

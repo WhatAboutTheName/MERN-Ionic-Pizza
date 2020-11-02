@@ -1,0 +1,8 @@
+.btnBottom {
+    bottom: 0;
+    position: fixed;
+}
+
+.btnMaxWidth {
+    min-width: 100%;
+}
