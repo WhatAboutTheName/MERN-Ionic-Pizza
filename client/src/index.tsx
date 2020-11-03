@@ -4,13 +4,20 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from './store/reducers/root-reducers';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { autonotificationWatcher, logoutMethodWatcher } from './store/sagas/auth';
+
+const saga = createSagaMiddleware();
 
 const store = createStore(rootReducer, compose(
-    applyMiddleware(thunk),
+    applyMiddleware(saga, thunk),
     (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__()
 ));
+
+saga.run(autonotificationWatcher);
+saga.run(logoutMethodWatcher);
 
 ReactDOM.render(
     <Provider store={store}>

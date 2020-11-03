@@ -1,5 +1,4 @@
-import { axios } from "../../axios";
-import { IS_ADMIN, IS_LOGIN, USER_TOKEN, USER_EXPIRES_IN, USER_ID } from "../action-types";
+import { IS_ADMIN, IS_LOGIN, USER_TOKEN, USER_EXPIRES_IN, USER_ID, AUTONOTIFICATION, LOGOUT_METHOD } from "../action-types";
 
 export const isAdmin = (isAdmin: boolean) => {
     return {
@@ -49,23 +48,21 @@ export const userId = (userId: string) => {
     }
 }
 
-export const autonotification = (email: string, password: string) => async (dispatch: any) => {
-    const res = await axios.post('/auth/login', {email: email, password: password});
-    dispatch( isAdmin(res.data.admin) );
-    dispatch( isLogin(res.data.isLogin) );
-    dispatch( userToken(res.data.token) );
-    dispatch( userExpiresIn(res.data.expiresIn) );
-    dispatch( userId(res.data.userId) );
+export const autonotification = (email: string, password: string) => {
+    return {
+        type: AUTONOTIFICATION,
+        payload: {
+            email: email,
+            password: password
+        }
+    }
 }
 
-export const logoutMethod = (Id: string) => async (dispatch: any) => {
-    dispatch( isAdmin(false) );
-    dispatch( isLogin(false) );
-    dispatch( userToken('') );
-    dispatch( userExpiresIn('0') );
-    dispatch( userId('') );
-    localStorage.removeItem('isLogin');
-    localStorage.removeItem('token');
-    localStorage.removeItem('expiresIn');
-    await axios.put('/auth/logout', {userId: Id});
+export const logoutMethod = (Id: string) => {
+    return {
+        type: LOGOUT_METHOD,
+        payload: {
+            Id: Id
+        }
+    }
 }

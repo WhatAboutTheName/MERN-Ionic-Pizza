@@ -28,7 +28,7 @@ const Menu: React.FC<ChildProp> = ({ history }) => {
     const logout = async () => {
         try {
             await dispatch(logoutMethod(userId));
-        } catch(e) {}
+        } catch (e) { }
     }
 
     return (
@@ -60,7 +60,7 @@ const Menu: React.FC<ChildProp> = ({ history }) => {
                             </IonMenuToggle>
                             <IonMenuToggle>
                                 <IonItem onClick={
-                                    () =>{
+                                    () => {
                                         logout()
                                         history.push('/log-in')
                                     }
